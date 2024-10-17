@@ -11,5 +11,5 @@ A beautiful and interactive web application where users can save their favorite 
 * Remove Books from Wishlist: Manage your saved books with a heart icon toggle.
 
 # 🚀 Demo
-Live Preview
+Live Preview : https://book-bloom.netlify.app/
 
