@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBloom</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="container">
+        <nav class="navbar">
+            <h1>Book Bloom</h1>
+            <div class="navlinks">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="wishlist.html">Wishlist</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="hero">
+            <h1>Revitalize Your Bookshelf <br> with New Reads</h1>
+            <img src="./Images/hero.png" alt="book cover" class="" />
+        </div>
+        <h2>Books</h2>
+
+        <div class="search-bar">
+            <!-- <input type="text" id="searchInput" placeholder="Search books by title..."> -->
+            <div class="searchBox">
+                <input class="searchInput" type="text" id="searchInput" placeholder="Search books by title...">
+                <button class="searchButton" href="#">
+                    🔍
+                </button>
+            </div>
+
+            <select id="genreFilter">
+                <option value="">All Genres</option>
+                <!-- Genres will be populated dynamically -->
+            </select>
+        </div>
+
+        <div id="booksContainer" class="books-container"></div>
+        <div class="spinner-container">
+            <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+        </div>
+        <div id="customAlert" class="custom-alert hidden"></div>
+
+        <div class="pagination">
+            <button id="prevPage">&lt;</button>
+            <span><span id="currentPage">1</span></span>
+            <button id="nextPage">&gt;</button>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
