@@ -24,6 +24,7 @@ const displayBooks = (books) => {
 		const coverImage = formats["image/jpeg"]
 		const bookCard = document.createElement("div")
 		bookCard.className = "book-card"
+		bookCard.dataset.id = id
 
 		bookCard.style.setProperty("--animation-delay", `${index * 0.75}s`)
 
@@ -37,6 +38,7 @@ const displayBooks = (books) => {
 			<hr />
             <p>Book Id: ${id}</p>
 			<a href="book.html?id=${id}" class="book-link">View Details</a>
+			<button class="remove" onclick="removeFromWishlist(${id})">❌</button>
         `
 
 		wishlistContainer.appendChild(bookCard)
@@ -44,9 +46,33 @@ const displayBooks = (books) => {
 }
 
 const removeFromWishlist = (bookId) => {
+	// Remove the book from the wishlist in localStorage
 	const updatedWishlist = wishlist.filter((id) => id !== bookId)
 	localStorage.setItem("wishlist", JSON.stringify(updatedWishlist))
-	fetchWishlistBooks()
+
+	// Remove the book card from the UI
+	const bookCard = document.querySelector(`.book-card[data-id="${bookId}"]`)
+	if (bookCard) {
+		bookCard.remove() // Remove the card from the UI
+	}
+
+	// Update the wishlist variable
+	wishlist.length = 0 // Clear the old wishlist
+	wishlist.push(...updatedWishlist) // Add the updated wishlist
+
+	// Show a custom alert message
+	showAlert(`Book "${bookId}" has been removed from the wishlist!`)
 }
 
+const showAlert = (message) => {
+	const alertBox = document.getElementById("customAlert")
+	alertBox.textContent = message
+	alertBox.classList.add("show")
+
+	setTimeout(() => {
+		alertBox.classList.remove("show")
+	}, 1500)
+}
+
+// Initial fetch call to populate wishlist
 fetchWishlistBooks()
